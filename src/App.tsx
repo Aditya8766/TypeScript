@@ -1,24 +1,24 @@
-import React from 'react';
-import logo from './logo.svg';
+import { useEffect, useState } from 'react';
+import { text } from 'stream/consumers';
 import './App.css';
+import BasicRender from './components/BasicRender';
+import EnhancedTable from './components/DataGrid';
+import DataTable from './components/DataGrid';
+
 
 function App() {
+  const [heading,setHeading]=useState("MyReactApp");
+
+function handelHeadingChange(text:any){
+  setHeading(text);
+}
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <BasicRender
+        heading={heading}
+        handelHeadingChange={handelHeadingChange}
+      />
+      <EnhancedTable/>
     </div>
   );
 }
